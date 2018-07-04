@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+
+	<persistence-unit name="billingPU" transaction-type="JTA">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<jta-data-source>java:jboss/dsilva/product/datasource/billingDS</jta-data-source>
+		<class>com.dsilva.billing.web.model.Customer</class>
+		<properties>
+			<!-- configure Jndi for Entity Manager Factory . Jboss will Link a EMF 
+				to this JNDI once application loads -->
+			<property name="jboss.entity.manager.factory.jndi.name"
+				value="java:jboss/dsilva/product/billing/entityManagerFactory" />
+			<property name="jboss.entity.manager.jndi.name"
+				value="java:jboss/dsilva/product/billing/entityManager" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+
+		</properties>
+
+
+	</persistence-unit>
+
+
+</persistence>
