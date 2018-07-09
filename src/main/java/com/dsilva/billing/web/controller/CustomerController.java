@@ -26,7 +26,6 @@
  ******************************************************************************/
 package com.dsilva.billing.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,14 +33,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dsilva.billing.web.dao.CustomerDAO;
 import com.dsilva.billing.web.model.Customer;
+import com.dsilva.billing.web.service.CustomerService;
 
 @Controller
-@RequestMapping(value="/billing")
+@RequestMapping(value="/customer")
 public class CustomerController {
 
-	@Autowired
+	
+	
+	/*@Autowired
 	CustomerDAO<Customer> customerDao;
 	
 	
@@ -51,8 +52,11 @@ public class CustomerController {
 
 	public void setCustomerDao(CustomerDAO<Customer> customerDao) {
 		this.customerDao = customerDao;
-	}
+	}*/
 
+	private CustomerService service;
+	
+	
 	public CustomerController() {
 		// TODO Auto-generated constructor stub
 	}
@@ -72,10 +76,10 @@ public class CustomerController {
 		
 		try {
 		
-			this.customerDao.save(customerModel);
-		
+			//this.customerDao.save(customerModel);
+			service.save(customerModel);
 			model.addObject("customerModel",customerModel);
-			model.addObject("customerModelList",this.customerDao.findAllOrderByName());
+			model.addObject("customerModelList",service.findAllOrderByName());
 			model.setViewName("addCustomer");
 			
 			//return model;

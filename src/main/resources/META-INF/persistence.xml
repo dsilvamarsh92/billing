@@ -16,7 +16,7 @@
 				value="java:jboss/dsilva/product/billing/entityManagerFactory" />
 			<property name="jboss.entity.manager.jndi.name"
 				value="java:jboss/dsilva/product/billing/entityManager" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 
